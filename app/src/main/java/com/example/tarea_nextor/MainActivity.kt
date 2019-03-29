@@ -9,17 +9,19 @@ import java.io.IOException
 import android.support.v7.widget.LinearLayoutManager
 import com.example.tarea_nextor.Utils.Pokemon
 import android.support.v7.widget.RecyclerView
+import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
-
+    //  Tried to get the json but didn't work
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
+    private var gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        initRecycler()
+        //initRecycler()
 
         pokemon_button.setOnClickListener {
             val pokemonNumber = pokemon_id.text.toString().trim()
@@ -63,15 +65,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+}
 
 
-
+/*
     fun initRecycler() {
 
         var pokemon: MutableList<Pokemon> = MutableList(10) {i ->
             Pokemon(i,"Name" + i, "Type " + i,"Abilities")
         }
-
         viewManager = LinearLayoutManager(this)
         viewAdapter = PokemonAdapter(pokemon)
 
@@ -83,4 +85,4 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-}
+}*/
