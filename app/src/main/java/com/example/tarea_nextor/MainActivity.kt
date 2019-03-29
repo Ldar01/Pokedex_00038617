@@ -6,12 +6,20 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
 import com.example.tarea_nextor.Utils.NetworkUtils
 import java.io.IOException
+import android.support.v7.widget.LinearLayoutManager
+import com.example.tarea_nextor.Utils.Pokemon
+import android.support.v7.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var viewAdapter: RecyclerView.Adapter<*>
+    private lateinit var viewManager: RecyclerView.LayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        initRecycler()
 
         pokemon_button.setOnClickListener {
             val pokemonNumber = pokemon_id.text.toString().trim()
@@ -54,6 +62,25 @@ class MainActivity : AppCompatActivity() {
                 results_pokedex.text = getString(R.string.text_nothing_to_show)
             }
         }
+    }
+
+
+
+    fun initRecycler() {
+
+        var pokemon: MutableList<Pokemon> = MutableList(10) {i ->
+            Pokemon(i,"Name" + i, "Type " + i,"Abilities")
+        }
+
+        viewManager = LinearLayoutManager(this)
+        viewAdapter = PokemonAdapter(pokemon)
+
+        pokemon_list.apply {
+            setHasFixedSize(true)
+            layoutManager = viewManager
+            adapter = viewAdapter
+        }
+
     }
 
 }
