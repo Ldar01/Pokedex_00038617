@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.tarea_nextor.Utils.Pokemon
-import kotlinx.android.synthetic.main.pokemon_list.view.*
+import kotlinx.android.synthetic.main.pokemon_list2.view.*
 
 class PokemonAdapter(val items: List<Pokemon>) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
@@ -14,7 +14,7 @@ class PokemonAdapter(val items: List<Pokemon>) : RecyclerView.Adapter<PokemonAda
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.pokemon_list, parent, false)
+            .inflate(R.layout.pokemon_list2, parent, false)
 
         view.findViewById<TextView>(R.id.pokemon_id_count).text = countViews.toString()
         countViews++
