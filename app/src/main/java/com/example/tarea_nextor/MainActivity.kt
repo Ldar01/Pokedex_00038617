@@ -9,6 +9,7 @@ import java.io.IOException
 import android.support.v7.widget.LinearLayoutManager
 import com.example.tarea_nextor.Utils.Pokemon
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import com.google.gson.Gson
 
 class MainActivity : AppCompatActivity() {
@@ -59,7 +60,9 @@ class MainActivity : AppCompatActivity() {
 
         override fun onPostExecute(pokemonInfo: String?) {
             if (pokemonInfo != null || pokemonInfo != "") {
-                results_pokedex.text = pokemonInfo
+                val res = gson.fromJson(pokemonInfo,Pokemon::class.java)
+                Log.d("GSON", res.abilities.toString())
+                results_pokedex.text = res.name+" Ability: "+ res.abilities!![0].ability!!.name
             } else {
                 results_pokedex.text = getString(R.string.text_nothing_to_show)
             }

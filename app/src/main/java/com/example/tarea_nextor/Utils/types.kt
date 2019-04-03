@@ -1,3 +1,11 @@
 package com.example.tarea_nextor.Utils
 
-data class types (val slot : Int, val type : type)
+class types (slot : Int, type : type){
+    var slot:Int =0
+    var type:type?= null
+
+    init {
+        this.slot = slot
+        this.type = type
+    }
+}

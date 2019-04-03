@@ -1,3 +1,11 @@
 package com.example.tarea_nextor.Utils
 
-data class type (val name: String, val url : String)
+class type (name: String, url : String){
+    var name:String = ""
+    var url:String = ""
+
+    init {
+        this.name = name
+        this.url = url
+    }
+}

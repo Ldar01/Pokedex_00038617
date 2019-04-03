@@ -34,8 +34,8 @@ class PokemonAdapter(val items: List<Pokemon>) : RecyclerView.Adapter<PokemonAda
 
         fun bind(item: Pokemon) = with(itemView) {
             nombre_pokemon.text = item.name
-            tipo_pokemon.text = item.type
-            others.text = item.abilities
+            tipo_pokemon.text = item.types.toString()
+            others.text = item.abilities.toString()
         }
     }
 }
