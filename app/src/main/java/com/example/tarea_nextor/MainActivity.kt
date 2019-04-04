@@ -10,7 +10,10 @@ import android.support.v7.widget.LinearLayoutManager
 import com.example.tarea_nextor.Utils.Pokemon
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import com.example.tarea_nextor.Utils.Pokemon_dummy
 import com.google.gson.Gson
+import org.json.JSONArray
+import org.json.JSONObject
 
 class MainActivity : AppCompatActivity() {
     //  Tried to get the json but didn't work
@@ -75,18 +78,21 @@ class MainActivity : AppCompatActivity() {
         override fun onPostExecute(pokemonInfo: String?) {
             super.onPostExecute(pokemonInfo)
             Log.d("pokemon",pokemonInfo)
-           /* if (pokemonInfo != null || pokemonInfo != "") {
-                val res = gson.fromJson(pokemonInfo,Pokemon::class.java)
-                Log.d("GSON", res.abilities.toString())
 
+
+           if (pokemonInfo != null || pokemonInfo != "") {
+                //val res = gson.fromJson(pokemonInfo,Pokemon::class.java)
+               //Log.d("GSON", res.abilities.toString())
+               var respuesta:JSONObject = JSONObject(pokemonInfo)
+               var pokemon_ : JSONArray = respuesta.getJSONArray("results")
                 pokemon = MutableList(10){
-                    Pokemon(res[it].id,res.name,res.types!!,res.abilities!!)
+                    Pokemon_dummy(JSONObject(pokemon_[it]).url, JSONObject(pokemon_[it]).name)
                 }
                 initRecycler()
                 //results_pokedex.text = res.name+" Ability: "+ res.abilities!![0].ability!!.name
             } else {
                 results_pokedex.text = getString(R.string.text_nothing_to_show)
-            }*/
+            }
         }
     }
 }
