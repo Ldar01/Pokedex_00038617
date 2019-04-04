@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.example.tarea_nextor.Utils.Pokemon
+import com.example.tarea_nextor.Utils.Pokemon_dummy
 import kotlinx.android.synthetic.main.pokemon_list2.view.*
 
-class PokemonAdapter(var items: List<Pokemon>) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
+class PokemonAdapter(var items: List<Pokemon_dummy>) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     //private var countViews: Int = 0
 
@@ -32,7 +33,7 @@ class PokemonAdapter(var items: List<Pokemon>) : RecyclerView.Adapter<PokemonAda
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: Pokemon) = with(itemView) {
+        fun bind(item: Pokemon_dummy) = with(itemView) {
             //pokemon_id_count_recycle.text = item.id.toString()
             nombre_pokemon_recycle.text = item.name
 

@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     //  Tried to get the json but didn't work
     private lateinit var viewAdapter: RecyclerView.Adapter<*>
     private lateinit var viewManager: RecyclerView.LayoutManager
-    private lateinit var pokemon : MutableList<Pokemon>
+    private lateinit var pokemon : MutableList<Pokemon_dummy>
     private var gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,9 +84,10 @@ class MainActivity : AppCompatActivity() {
                 //val res = gson.fromJson(pokemonInfo,Pokemon::class.java)
                //Log.d("GSON", res.abilities.toString())
                var respuesta:JSONObject = JSONObject(pokemonInfo)
-               var pokemon_ : JSONArray = respuesta.getJSONArray("results")
+               var pokemonResult : JSONArray = respuesta.getJSONArray("results")
+               Log.d("Info_Poke", pokemonResult.getString(0))
                 pokemon = MutableList(10){
-                    Pokemon_dummy(JSONObject(pokemon_[it]).url, JSONObject(pokemon_[it]).name)
+                    Pokemon_dummy(JSONObject(pokemonResult[it].toString()).getString("url"), JSONObject(pokemonResult[it].toString()).getString("name"))
                 }
                 initRecycler()
                 //results_pokedex.text = res.name+" Ability: "+ res.abilities!![0].ability!!.name
