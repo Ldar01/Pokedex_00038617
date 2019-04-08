@@ -1,5 +1,6 @@
 package com.example.tarea_nextor
 
+import android.content.Intent
 import android.os.AsyncTask
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +11,7 @@ import android.support.v7.widget.LinearLayoutManager
 import com.example.tarea_nextor.Utils.Pokemon
 import android.support.v7.widget.RecyclerView
 import android.util.Log
+import com.example.tarea_nextor.Utils.AppConstants
 import com.example.tarea_nextor.Utils.Pokemon_dummy
 import com.google.gson.Gson
 import org.json.JSONArray
@@ -43,13 +45,25 @@ class MainActivity : AppCompatActivity() {
     fun initRecycler() {
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = PokemonAdapter(pokemon)
+        viewAdapter = PokemonAdapter(pokemon,pokemonClickListener())
 
         pokemon_list.apply {
             setHasFixedSize(true)
             layoutManager = viewManager
             adapter = viewAdapter
         }
+
+    }
+
+    fun pokemonClickListener(pokemonClick:Pokemon_dummy){
+        val intento: Intent? = null
+        if (intento != null) {
+            intento.putExtra(AppConstants.TEXT_KEY_POKEMON_URL, pokemonClick.url)
+            intento.putExtra(AppConstants.TEXT_KEY_POKEMON_NAME,pokemonClick.name)
+
+            startActivity(intento)
+        }
+
 
     }
 

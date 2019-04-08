@@ -11,7 +11,6 @@ import com.example.tarea_nextor.Utils.Pokemon_dummy
 import kotlinx.android.synthetic.main.pokemon_list2.view.*
 import android.support.v4.content.ContextCompat.startActivity
 import com.example.tarea_nextor.Utils.AppConstants
-import android.R.attr.password
 
 
 
@@ -37,16 +36,12 @@ class PokemonAdapter(val items: List<Pokemon_dummy>,val clickListener: (Pokemon_
     }
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        override fun onClick(v: View?) {
-            var intento:Intent = Intent( itemView.context,SecondActivity::class.java)
-
-
-        }
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Pokemon_dummy, clickListener: (Pokemon_dummy)->Unit) = with(itemView) {
             //pokemon_id_count_recycle.text = item.id.toString()
             nombre_pokemon_recycle.text = item.name
+            this.setOnClickListener{clickListener(item)}
 
         }
     }
