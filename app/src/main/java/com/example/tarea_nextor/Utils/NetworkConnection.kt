@@ -34,6 +34,22 @@ object NetworkUtils {
         return url
     }
 
+    fun buildUrl2(url_pokemon: String): URL? {
+        val builtUri = Uri.parse(url_pokemon)
+
+
+        var url: URL? = null
+        try {
+            url = URL(builtUri.toString())
+        } catch (e: MalformedURLException) {
+            e.printStackTrace()
+        }
+
+        Log.d(TAG, "Built URI " + url!!)
+
+        return url
+    }
+
     @Throws(IOException::class)
     fun getResponseFromHttpUrl(url: URL): String? {
         val urlConnection = url.openConnection() as HttpURLConnection

@@ -1,5 +1,6 @@
 package com.example.tarea_nextor
 
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +9,13 @@ import android.widget.TextView
 import com.example.tarea_nextor.Utils.Pokemon
 import com.example.tarea_nextor.Utils.Pokemon_dummy
 import kotlinx.android.synthetic.main.pokemon_list2.view.*
+import android.support.v4.content.ContextCompat.startActivity
+import com.example.tarea_nextor.Utils.AppConstants
+import android.R.attr.password
 
-class PokemonAdapter(var items: List<Pokemon_dummy>) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
+
+
+class PokemonAdapter(val items: List<Pokemon_dummy>,val clickListener: (Pokemon_dummy)->Unit) : RecyclerView.Adapter<PokemonAdapter.ViewHolder>() {
 
     //private var countViews: Int = 0
 
@@ -27,13 +33,18 @@ class PokemonAdapter(var items: List<Pokemon_dummy>) : RecyclerView.Adapter<Poke
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(items[position])
+        holder.bind(items[position],clickListener)
     }
 
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        override fun onClick(v: View?) {
+            var intento:Intent = Intent( itemView.context,SecondActivity::class.java)
 
-        fun bind(item: Pokemon_dummy) = with(itemView) {
+
+        }
+
+        fun bind(item: Pokemon_dummy, clickListener: (Pokemon_dummy)->Unit) = with(itemView) {
             //pokemon_id_count_recycle.text = item.id.toString()
             nombre_pokemon_recycle.text = item.name
 
