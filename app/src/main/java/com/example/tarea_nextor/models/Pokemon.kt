@@ -1,6 +1,9 @@
-package com.example.tarea_nextor.Utils
+package com.example.tarea_nextor.models
 
-class Pokemon (id: Int, name: String,  types: ArrayList<types>, abilities: ArrayList<abilities>) {
+import com.example.tarea_nextor.Others.abilities
+import com.example.tarea_nextor.Others.types
+
+class Pokemon (id: Int, name: String, types: ArrayList<types>, abilities: ArrayList<abilities>) {
     var id: Int = 0
     var name: String = ""
     var types: ArrayList<types>? = null

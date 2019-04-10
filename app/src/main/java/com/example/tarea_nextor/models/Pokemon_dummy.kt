@@ -1,3 +1,3 @@
-package com.example.tarea_nextor.Utils
+package com.example.tarea_nextor.models
 
 data class Pokemon_dummy(val url : String, val name:String)

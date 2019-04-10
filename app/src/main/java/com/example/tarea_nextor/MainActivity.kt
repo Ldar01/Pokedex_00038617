@@ -8,11 +8,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import com.example.tarea_nextor.Utils.NetworkUtils
 import java.io.IOException
 import android.support.v7.widget.LinearLayoutManager
-import com.example.tarea_nextor.Utils.Pokemon
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import com.example.tarea_nextor.Utils.AppConstants
-import com.example.tarea_nextor.Utils.Pokemon_dummy
+import com.example.tarea_nextor.models.Pokemon_dummy
 import com.google.gson.Gson
 import org.json.JSONArray
 import org.json.JSONObject
@@ -55,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun pokemonClickListener(pokemonClick:Pokemon_dummy){
+    fun pokemonClickListener(pokemonClick: Pokemon_dummy){
         val intento: Intent? = null
         if (intento != null) {
             intento.putExtra(AppConstants.TEXT_KEY_POKEMON_URL, pokemonClick.url)
@@ -101,7 +100,10 @@ class MainActivity : AppCompatActivity() {
                var pokemonResult : JSONArray = respuesta.getJSONArray("results")
                Log.d("Info_Poke", pokemonResult.getString(0))
                 pokemon = MutableList(10){
-                    Pokemon_dummy(JSONObject(pokemonResult[it].toString()).getString("url"), JSONObject(pokemonResult[it].toString()).getString("name"))
+                    Pokemon_dummy(
+                        JSONObject(pokemonResult[it].toString()).getString("url"),
+                        JSONObject(pokemonResult[it].toString()).getString("name")
+                    )
                 }
                 initRecycler()
                 //results_pokedex.text = res.name+" Ability: "+ res.abilities!![0].ability!!.name

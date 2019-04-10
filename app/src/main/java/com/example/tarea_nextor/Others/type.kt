@@ -1,6 +1,6 @@
-package com.example.tarea_nextor.Utils
+package com.example.tarea_nextor.Others
 
-class ability ( name : String, url : String){
+class type (name: String, url : String){
     var name:String = ""
     var url:String = ""
 

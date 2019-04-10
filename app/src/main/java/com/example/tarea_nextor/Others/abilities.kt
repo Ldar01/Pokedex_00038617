@@ -1,7 +1,9 @@
-package com.example.tarea_nextor.Utils
+package com.example.tarea_nextor.Others
+
+import com.example.tarea_nextor.Others.ability
 
 class abilities (ability : ability, is_hidden : Boolean, slot : Int){
-    var ability:ability?= null
+    var ability: ability?= null
     var is_hidden: Boolean = true
     var slot:Int = 0
 
