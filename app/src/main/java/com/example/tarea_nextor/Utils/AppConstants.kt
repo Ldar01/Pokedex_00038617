@@ -6,4 +6,5 @@ object AppConstants {
     val TEXT_KEY_POKEMON_NAME = "textKeyName"
     val TEXT_KEY_POKEMON_ABILITIES = "textKeyAbilities"
     val TEXT_KEY_POKEMON_URL = "textKeyUrl"
+    val TEXT_KEY_POKEINFO ="textKeyPokeInfo"
 }

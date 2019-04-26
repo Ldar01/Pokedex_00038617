@@ -44,7 +44,9 @@ class MainActivity : AppCompatActivity() {
     fun initRecycler() {
 
         viewManager = LinearLayoutManager(this)
-        viewAdapter = PokemonAdapter(pokemon,pokemonClickListener())
+        viewAdapter = PokemonAdapter(pokemon){
+                v:Pokemon_dummy->pokemonClickListener(v)
+        }
 
         pokemon_list.apply {
             setHasFixedSize(true)
@@ -55,14 +57,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun pokemonClickListener(pokemonClick: Pokemon_dummy){
-        val intento: Intent? = null
-        if (intento != null) {
-            intento.putExtra(AppConstants.TEXT_KEY_POKEMON_URL, pokemonClick.url)
-            intento.putExtra(AppConstants.TEXT_KEY_POKEMON_NAME,pokemonClick.name)
-
-            startActivity(intento)
-        }
-
+        var intent= Intent(this@MainActivity,SecondActivity::class.java)
+        intent.putExtra(AppConstants.TEXT_KEY_POKEMON_URL,pokemonClick.url)
+        startActivity(intent)
 
     }
 
