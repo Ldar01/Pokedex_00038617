@@ -38,16 +38,16 @@ object NetworkUtils {
         val builtUri = Uri.parse(url_pokemon)
 
 
-        var url: URL? = null
+        var url2: URL? = null
         try {
-            url = URL(builtUri.toString())
+            url2 = URL(builtUri.toString())
         } catch (e: MalformedURLException) {
             e.printStackTrace()
         }
 
-        Log.d(TAG, "Built URI " + url!!)
+        Log.d("Built URI 2 ", url2.toString())
 
-        return url
+        return url2
     }
 
     @Throws(IOException::class)
